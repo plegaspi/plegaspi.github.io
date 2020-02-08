@@ -2,6 +2,12 @@
 <html>
   <head>
     <title>Video Capture Demo</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
   <body>
     <script src="p5.min.js"></script>
@@ -10,16 +16,16 @@
       let capture;
 
       function setup() {
-        createCanvas(390, 240);
+        createCanvas(window.innerHeight, window.innerWidth);
         capture = createCapture(VIDEO);
         capture.size(320, 240);
         //capture.hide();
       }
 
       function draw() {
-        background(255);
-        image(capture, 0, 0, 320, 240);
-        filter(INVERT);
+        //background(255);
+        //image(capture, 0, 0, 320, 240);
+        //filter(INVERT);
       }
     </script>
   </body>

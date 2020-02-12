@@ -96,8 +96,6 @@
         capture.size(width, height);
         //Hides the HTML video element created by the createCapture function
         capture.hide();
-        //Set default frame rate
-        frameRate(60);
         //Sets the default tint and color states
         tintState = false;
         red = 255;
@@ -115,7 +113,7 @@
         if (tintState === true) {
           tint(red, green, blue);
         } else {
-          noTint();
+          tint(255, 255, 255);
         }
       }
 

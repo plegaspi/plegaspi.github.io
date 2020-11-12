@@ -1,160 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>p5 Video Capture Demo</title>
-    <link rel="stylesheet" href="normalize.css" />
-    <style>
-      *,
-      *::before,
-      *::after {
-        padding: 0;
-        margin: 0;
-      }
-
-      canvas {
-        display: block;
-        margin: auto;
-        box-shadow: 0 0 5px 3px;
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      .controls {
-        width: 80vw;
-        margin: 15px auto;
-      }
-
-      input[type="number"] {
-        max-width: 100px;
-      }
-
-      .red {
-        color: red;
-      }
-
-      .green {
-        color: green;
-      }
-
-      .blue {
-        color: blue;
-      }
-
-      h3 {
-        margin-top: 5px;
-      }
-    </style>
+    <title>poseNet Playground</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8" />
   </head>
   <body>
-    <h1>Photo Booth</h1>
-    <div id="container"></div>
-    <div class="controls">
-      <h2>Controls</h2>
-      <h3>Tint</h3>
-      <label><b>Toggle Tint</b></label>
-      <input id="tint-toggle" type="checkbox" />
-      <label
-        ><b>Enter <span class="red">RED</span></b></label
-      >
-      <input type="number" id="red" min="0" max="255" placeholder="255" />
-      <label
-        ><b>Enter <span class="green">GREEN</span></b></label
-      >
-      <input type="number" id="green" min="0" max="255" placeholder="127" />
-      <label
-        ><b>Enter <span class="blue">BLUE</span></b></label
-      >
-      <input type="number" id="blue" min="0" max="255" placeholder="80" />
-      <h3><b>Press S to save this photo</b></h3>
-    </div>
+    <h1>poseNet Playground</h1>
     <script src="p5.min.js"></script>
-    <script src="p5.dom.js"></script>
-    <script>
-      /*
-       * Default Variables
-       */
-      let width = window.innerWidth;
-      let height = window.innerHeight;
-      let capture;
-      let tintState, red, green, blue;
-
-      /*
-       * p5 Setup
-       */
-      function setup() {
-        let canvas = createCanvas(0.8 * width, 0.7 * height);
-        //Sets a different element as the parent of the canvas
-        canvas.parent("container");
-        //Creates an HTML video element streaming from the user's camera
-        capture = createCapture(VIDEO);
-        background(105, 105, 105);
-        capture.size(width, height);
-        //Hides the HTML video element created by the createCapture function
-        capture.hide();
-        //Sets the default tint and color states
-        tintState = false;
-        red = 255;
-        blue = 127;
-        green = 80;
-      }
-
-      /*
-       * p5 Draw
-       */
-      function draw() {
-        //Mirrors the stream from the HTML element onto the canvas
-        image(capture, 0, 0, 0.8 * width, 0.7 * height);
-        //Checks if tint is enabled and applies the tint if enabled
-        if (tintState === true) {
-          tint(red, green, blue);
-        } else {
-          tint(255, 255, 255);
-        }
-      }
-
-      /*
-       * Responsive Canvas
-       */
-      function windowResized() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        resizeCanvas(0.8 * width, 0.7 * height);
-      }
-
-      /*
-       * Check User Input for Controls
-       */
-      document.getElementById("tint-toggle").addEventListener("change", () => {
-        if (document.getElementById("tint-toggle").checked) {
-          tintState = true;
-        } else {
-          tintState = false;
-        }
-      });
-
-      document.getElementById("red").addEventListener("change", () => {
-        red = document.getElementById("red").value;
-      });
-
-      document.getElementById("green").addEventListener("change", () => {
-        green = document.getElementById("green").value;
-      });
-
-      document.getElementById("blue").addEventListener("change", () => {
-        blue = document.getElementById("blue").value;
-      });
-
-      window.addEventListener("keyup", () => {
-        if (event.which == 83) {
-          let name = prompt("What would you like to call this photo?");
-          saveCanvas(name, "jpg");
-        }
-      });
-    </script>
+    <script src="p5.dom.min.js"></script>
+    <script src="p5.sound.min.js"></script>
+    <script src="ml5.min.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

@@ -1,0 +1,106 @@
+<html id="docElement" class="inFlyout fullscreenClient mac mozilla firefox_2"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title></title>
+    <link href="PreChat_data/prechat.css" rel="stylesheet" type="text/css">
+    <script src="PreChat_data/ggewenframework.js" type="text/javascript"></script><script src="PreChat_data/webapplication.js" type="text/javascript"></script><script src="PreChat_data/jquery-1.js" type="text/javascript"></script><script src="PreChat_data/socket.js" type="text/javascript"></script><script src="PreChat_data/immutable-3.js" type="text/javascript"></script><script src="PreChat_data/itc-chat.js" type="text/javascript"></script>
+</head>
+
+<body style="margin:5px; background-color:rgba(0,0,0,0);;  font-family:Arial, Tahoma, sans-serif; color:#000000; font-size:9pt; ">
+    <div class="container" id="content-area">
+        <div id="backgroundcolor" style="display: none;"></div>
+        <div class="module-content" id="mycontent">
+            <div class="module-content">
+                <form method="post" id="formForITCLogin" name="formForITCLogin" action="/InTheChat/OnlineChat?Channel=LiveChatUSA" onsubmit="return Biz.ITC.PreChat.confirmSubmit();">
+                    <div class="questioncontainer" style="background-color: rgba(0,0,0,0);">
+                        <h1 id="headertext">
+                            Please tell us a little about yourself
+                        </h1>
+                        <div class="question ">
+                            <label for="LoginName" id="label_LoginName">Name:</label>
+                            <br>
+                            <input type="text" name="LoginName" id="LoginName" size="31" maxlength="80" __nafieldrequired="true" required="" placeholder="Required">
+                        </div>
+                        <div class="question ">
+                            <label for="Email" id="label_Email">Email Address:</label>
+                            <br>
+                            <input type="email" name="Email" id="Email" size="31" maxlength="128" __nafieldrequired="true" required="" placeholder="Required" inputmode="email" title="Email Address:" __naregularexpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" pattern="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">
+                        </div>
+                        <div class="question "><label for="Subject" id="label_Subject">How can we help?</label><br><textarea spellcheck="true" name="Subject" id="Subject" __nafieldrequired="true" required="" placeholder="Required" __namaxlength="300" onkeyup="Biz.ITC.PreChat.checkInputLength('Subject');" style="resize:vertical" rows="6" cols="27"></textarea></div>
+                        <input type="hidden" name="IsNewChat" id="IsNewChat" value="1" size="1">
+                        <input type="hidden" name="OrderNumber" id="OrderNumber" value="" maxlength="12">
+                        <input type="hidden" name="selectLanguage" id="selectLanguage" value="English" maxlength="12">
+                        <div class="buttons">
+                            <input type="submit" value="Start Chat" id="submitBtn" name="submitBtn" size="20">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            var isLogin = 'False'.toLowerCase() == "true";
+            var loginName = '';
+            var loginEmail = '';
+            if (isLogin) {
+                loginName = ' ';
+                loginEmail = '';
+                jQuery("#LoginName").val(loginName);
+                jQuery("#Email").val(loginEmail);
+            }
+            Biz.ITC.ChatWith.getwindowstate();
+            var canJoinChat = Biz.ITC.Chat.canJoinChat(loginName, loginEmail);
+            if (canJoinChat) {
+                window.location.href = '/InTheChat/OnlineChat?channel=LiveChatUSA';
+            }
+            
+            Biz.ITC.ChatWith.clientIsShowChatWindow('False'.toLowerCase() === "true");
+        
+            jQuery("#LoginName").blur(function () {
+                var value = jQuery("#LoginName").val();
+                value = Biz.ITC.PreChat.validate(value);
+                jQuery("#LoginName").val(value);
+            });
+            jQuery("#Email").blur(function () {
+                var value = jQuery("#Email").val();
+                value = Biz.ITC.PreChat.validate(value);
+                jQuery("#Email").val(value);
+            });
+            jQuery("#Subject").blur(function () {
+                var value = jQuery("#Subject").val();
+                value = Biz.ITC.PreChat.validate(value);
+                jQuery("#Subject").val(value);
+            });
+        });
+        window.onmessage = function (e) {
+            if (e.data.key == "hide") {
+                Biz.ITC.ChatWith.setWindowState('0');
+            } else if (e.data.key == "show") {
+                Biz.ITC.ChatWith.setWindowState('1');
+            } else if (e.data.key == "close") {
+                Biz.ITC.ChatWith.closeChatInframe();
+            } else if (e.data.key == "startChat") {
+                Biz.ITC.ChatWith.statrtChat(e.data.value);
+                window.location.href = '/InTheChat/OnlineChat?channel=LiveChatUSA';
+            }else if (e.data.key == "hiddenWindow") {
+                Biz.ITC.ChatWith.clientCloseWindow();
+            } else if (e.data.key == "headerStartChat") {
+                jQuery("#Subject").val('Hi,I am  ');
+                Biz.ITC.PreChat.confirmSubmit();
+                window.location.href = '/InTheChat/OnlineChat?channel=LiveChatUSA';
+            }
+            else if (e.data.key == "CancelOrderStartChat") {
+                jQuery("#Subject").val(decodeURIComponent(e.data.msg));
+                jQuery("#LoginName").val(decodeURIComponent(e.data.loginName));
+                jQuery("#Email").val(decodeURIComponent(e.data.email));
+                var reg = /^[\d]+$/;
+                var res = reg.test(e.data.ordernumber);
+                if (res) { jQuery("#OrderNumber").val(e.data.ordernumber); }
+
+                Biz.ITC.PreChat.confirmSubmit();
+                window.location.href = '/InTheChat/OnlineChat?channel=LiveChatRetentionInternational';
+            }
+        }
+    </script>
+
+</body></html>

@@ -1,16 +1,136 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>poseNet Playground</title>
-    <link rel="stylesheet" href="styles.css" />
-    <meta charset="utf-8" />
-  </head>
-  <body>
-    <h1>poseNet Playground</h1>
-    <script src="p5.min.js"></script>
-    <script src="p5.dom.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <script src="ml5.min.js"></script>
-    <script src="index.js"></script>
-  </body>
+
+<head>
+  <title>Tactical Tek</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <nav>
+    <a class="logo" href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
+    <form>
+      <input class="search-bar" type="search" placeholder="Search">
+      <button class="search-button"><img src="assets/img/search-icon.png" alt=""></button>
+    </form>
+    <div class="category-div">
+      <a class="main-dropdown" href="">Categories</a>
+      <div class="dropdown">
+        <a href="desktop.html">Desktops</a>
+        <a href="laptop.html">Laptops</a>
+        <a href="tablets.html">Tablets</a>
+        <a href="phones.html">Phones</a>
+      </div>
+    </div>
+    <a href="error.html">Account</a>
+    <a href="error.html">Cart</a>
+  </nav>
+  <header id="index">
+    <div class="header-text">
+      <h1>Providing consumers with the <br>latest and greatest technology...</h1>
+      <p>Enter coupon code Tactical for a 20% discount</p>
+    </div>
+  </header>
+  <section id="products">
+    <h1 class="products-header">Product Categories</h1>
+    <div class="product-category-card">
+      <div class="product-category-img-wrapper">
+        <img class="desktop-img" src="assets/img/surface-studio-2.jpg" alt="Surface Pro">
+      </div>
+      <div class="product-category-card-description">
+        <h1 class="product-category-card-heading">Desktops</h1>
+        <p class="product-category-card-body-text">We provide desktop class hardware that is sourced from trusted
+          suppliers and uses only the highest quality components. Every piece of equipment is subject to our rigorous
+          hardware and software examination before being sold to cutomers. We have created and can garuntee the best
+          consumer and enterprise experience. It satisfies the needs of creatives, gamers,
+          and
+          professionals and helps them push the boundaries of what is possible and augment their abilities for maximum
+          performance. </p>
+        <a class="learn-more" href="desktop.html">Explore</a>
+      </div>
+    </div>
+    <div class="product-category-card">
+      <div class="product-category-img-wrapper">
+        <img class="laptop-img" src="assets/img/macbook-pro.jpg" alt="Macbook Pro">
+      </div>
+      <div class="product-category-card-description">
+        <h1 class="product-category-card-heading">Laptops</h1>
+        <p class="product-category-card-body-text">We provide laptops that are sourced from trusted suppliers and uses
+          only the highest quality parts. Every piece of equipment is subject to our rigorous
+          hardware and software examination before being sold to cutomers. We have created and can garuntee the best
+          consumer and enterprise experience. It satisfies the needs of creatives, developers, gamers,
+          and
+          professionals and helps them push the boundaries of what is possible and augment their abilities for maximum
+          performance. </p>
+        <a class="learn-more" href="laptop.html">Explore</a>
+      </div>
+    </div>
+    <div class="product-category-card">
+      <div class="product-category-img-wrapper">
+        <img class="tablet-img" src="assets/img/ipad-pro.jpg" alt="iPad Pro">
+      </div>
+      <div class="product-category-card-description">
+        <h1 class="product-category-card-heading">Tablets</h1>
+        <p class="product-category-card-body-text">We provide tablets that are sourced from trusted suppliers and uses
+          only the highest quality parts. Every piece of equipment is subject to our rigorous
+          hardware and software examination before being sold to cutomers. We have created and can garuntee the best
+          consumer and enterprise experience. It satisfies the needs of creatives, developers, gamers,
+          and
+          professionals and helps them push the boundaries of what is possible and augment their abilities for maximum
+          performance. </p>
+        <a class="learn-more" href="tablets.html">Explore</a>
+      </div>
+    </div>
+    <div class="product-category-card">
+      <div class="product-category-img-wrapper">
+        <img class="phone-img" src="assets/img/iphone-x.jpg" alt="iPhone X (pronounced Ten)">
+      </div>
+      <div class="product-category-card-description">
+        <h1 class="product-category-card-heading">Phones</h1>
+        <p class="product-category-card-body-text">We provide phones that are sourced from trusted suppliers and uses
+          only the highest quality parts. Every piece of equipment is subject to our rigorous
+          hardware and software examination before being sold to cutomers. We have created and can garuntee the best
+          consumer and enterprise experience. It satisfies the needs of creatives, developers, gamers,
+          and
+          professionals and helps them push the boundaries of what is possible and augment their abilities for maximum
+          performance. </p>
+        <a class="learn-more" href="phones.html">Explore</a>
+      </div>
+    </div>
+  </section>
+  <section id="suppliers">
+    <h1 class="suppliers-header">Trusted Partners</h1>
+    <div class="suppliers">
+      <div class="suppliers-wrapper">
+        <img class="logo macpaw-img" src="assets/img/intel.png" alt="">
+      </div>
+      <div class="suppliers-wrapper">
+        <img class="logo dropbox-img" src="assets/img/AMD.png" alt="">
+      </div>
+      <div class="suppliers-wrapper">
+        <img class="logo dropbox-img" src="assets/img/nvidia.png" alt="">
+      </div>
+      <div class="suppliers-wrapper">
+        <img class="logo dropbox-img" src="assets/img/apple.png" alt="">
+      </div>
+      <div class="suppliers-wrapper">
+        <img class="logo dropbox-img" src="assets/img/microsoft.png" alt="">
+      </div>
+      <div class="suppliers-wrapper">
+        <img class="logo samsung-img" src="assets/img/samsung.png" alt="">
+      </div>
+    </div>
+  </section>
+  <footer>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="policies.html">Policies</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <p>Created and Designed By Paul Legaspi</p>
+    <p>Copyright 2018</p>
+  </footer>
+</body>
+
 </html>
